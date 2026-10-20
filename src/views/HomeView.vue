@@ -50,28 +50,28 @@ const steps = [
 const differentiators = [
   {
     id: '01',
-    img: '/assets/num-01.png',
+    img: `${import.meta.env.BASE_URL}assets/num-01.png`,
     title: 'حلول مخصصة',
     desc: 'رحلة متكاملة نمشيها معك، من دراسة السوق حتى الانطلاق الفعلي وتحقيق النمو.',
     reverse: false,
   },
   {
     id: '02',
-    img: '/assets/num-02.png',
+    img: `${import.meta.env.BASE_URL}assets/num-02.png`,
     title: 'فريق متكامل',
     desc: 'تحليل السوق، وتطوير الأعمال، والتصميم، والتسويق، كلها تحت سقف واحد بدل أكثر من جهة.',
     reverse: true,
   },
   {
     id: '03',
-    img: '/assets/num-03.png',
+    img: `${import.meta.env.BASE_URL}assets/num-03.png`,
     title: 'تركيز على النتائج',
     desc: 'نربط كل خطوة بأهداف تجارية واضحة، ونتابع الأداء لنتأكد أن العمل يحقق ما اتفقنا عليه.',
     reverse: false,
   },
   {
     id: '04',
-    img: '/assets/num-04.png',
+    img: `${import.meta.env.BASE_URL}assets/num-04.png`,
     title: 'وضوح في كل خطوة',
     desc: 'تعرف دائمًا أين وصل عملك، مع متابعة مستمرة وتقارير واضحة في كل مرحلة.',
     reverse: true,
