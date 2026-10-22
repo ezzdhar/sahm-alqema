@@ -259,20 +259,20 @@ onUnmounted(() => {
   }
 }
 
-/* Single Pill Header Bar Matching Figma Frame 49 */
+/* Single Pill Header Bar Matching Figma Frame 49 - Always Dark */
 .app-header__bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   gap: 24px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(9, 22, 39, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 40px;
   padding: 10px 24px;
-  box-shadow: none;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
   transition: all var(--transition-normal);
 }
 
@@ -280,7 +280,7 @@ onUnmounted(() => {
   .app-header__bar {
     padding: 8px 16px;
     gap: 16px;
-    background: rgba(9, 22, 39, 0.92);
+    background: rgba(9, 22, 39, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.18);
   }
 }
@@ -292,9 +292,9 @@ onUnmounted(() => {
 }
 
 .app-header--scrolled .app-header__bar {
-  background: rgba(9, 22, 39, 0.96);
+  background: rgba(9, 22, 39, 0.98);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
   padding: 10px 24px;
 }
 
