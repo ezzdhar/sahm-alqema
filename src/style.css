@@ -38,6 +38,7 @@
   --radius-full: 9999px;
 
   --font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  --font-cairo: 'Cairo', system-ui, -apple-system, sans-serif;
   --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
 
   --container-max-width: 1440px;

@@ -51,9 +51,9 @@ const serviceLinks = [
         </div>
 
         <!-- Links: Quick links -->
-        <div class="app-footer__col">
+        <div class="app-footer__col app-footer__col--quick">
           <h4 class="app-footer__title">روابط سريعة</h4>
-          <ul class="app-footer__list">
+          <ul class="app-footer__list app-footer__list--quick">
             <li v-for="link in quickLinks" :key="link.path">
               <RouterLink :to="link.path" class="app-footer__link">{{ link.name }}</RouterLink>
             </li>
@@ -61,25 +61,25 @@ const serviceLinks = [
         </div>
 
         <!-- Links: Services -->
-        <div class="app-footer__col">
+        <div class="app-footer__col app-footer__col--services">
           <h4 class="app-footer__title">خدماتنا</h4>
-          <ul class="app-footer__list">
+          <ul class="app-footer__list app-footer__list--services">
             <li v-for="link in serviceLinks" :key="link.name">
-              <RouterLink :to="link.path" class="app-footer__link">{{ link.name }}</RouterLink>
+              <RouterLink :to="link.path" class="app-footer__link app-footer__link--service">{{ link.name }}</RouterLink>
             </li>
           </ul>
         </div>
 
         <!-- Contact Column -->
-        <div class="app-footer__col">
+        <div class="app-footer__col app-footer__col--contact">
           <h4 class="app-footer__title">تواصل معنا</h4>
           <div class="app-footer__contact-info">
             <p class="app-footer__contact-item">الرياض، المملكة العربية السعودية</p>
             <p class="app-footer__contact-item">
-              <a href="mailto:info@sahmaqemma.com" class="app-footer__link">Sahmqima.Com</a>
+              <a href="mailto:info@sahmqima.com" class="app-footer__link">Sahmqima.com</a>
             </p>
             <p class="app-footer__contact-item" dir="ltr">
-              <a href="tel:+966500000000" class="app-footer__link">+966 50 000 0000</a>
+              <a href="tel:+201000000000" class="app-footer__link">+20 10 000 0000</a>
             </p>
           </div>
         </div>
@@ -99,8 +99,21 @@ const serviceLinks = [
 .app-footer {
   background-color: var(--color-navy-dark);
   color: var(--color-text-white);
-  padding: 80px 0 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 86px 0 32px;
+  border-top: none;
+}
+
+.app-footer__container {
+  max-width: 1248px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 1247px) {
+  .app-footer__container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .app-footer__grid {
@@ -117,8 +130,9 @@ const serviceLinks = [
 
 @media (min-width: 1024px) {
   .app-footer__grid {
-    grid-template-columns: 1.5fr 1fr 1.2fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1.5fr 115px 1.5fr 1fr;
+    gap: 48px;
+    align-items: start;
   }
 }
 
@@ -136,9 +150,10 @@ const serviceLinks = [
 }
 
 .app-footer__desc {
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--color-text-light);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  color: #E0E0E0;
   max-width: 320px;
 }
 
@@ -147,6 +162,7 @@ const serviceLinks = [
   align-items: center;
   gap: 12px;
   margin-top: 8px;
+  padding: 0;
 }
 
 .app-footer__social-btn {
@@ -168,12 +184,16 @@ const serviceLinks = [
   box-shadow: 0 4px 12px rgba(214, 33, 78, 0.4);
 }
 
-/* Titles & Lists */
+/* Titles & Lists Matching Figma Frame 90, 89, 88, 92 */
+.app-footer__col--quick {
+  width: 115px;
+}
+
 .app-footer__title {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 20px;
-  color: #FFFFFF;
+  color: #D6214E;
   position: relative;
   display: inline-block;
 }
@@ -182,14 +202,20 @@ const serviceLinks = [
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 12px; /* Frame 89 & 88 gap: 12px in Figma */
 }
 
 .app-footer__link {
-  font-size: 15px;
-  color: var(--color-text-light);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px; /* Line height 27px in Figma */
+  color: #E0E0E0;
   transition: all var(--transition-fast);
   display: inline-block;
+}
+
+.app-footer__link--service {
+  line-height: 27px;
 }
 
 .app-footer__link:hover {
@@ -200,13 +226,14 @@ const serviceLinks = [
 .app-footer__contact-info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px; /* Frame 92 gap: 8px in Figma */
 }
 
 .app-footer__contact-item {
-  font-size: 15px;
-  color: var(--color-text-light);
-  line-height: 1.6;
+  font-size: 18px;
+  font-weight: 500;
+  color: #E0E0E0;
+  line-height: 27px;
 }
 
 /* Bottom */
@@ -214,11 +241,15 @@ const serviceLinks = [
   margin-top: 60px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .app-footer__copyright {
-  font-size: 14px;
-  color: #64748B;
+  font-family: var(--font-inter);
+  font-size: 12px;
+  line-height: 18px;
+  color: #F0F0F0;
+  text-align: center;
 }
 </style>

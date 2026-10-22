@@ -189,7 +189,9 @@ onUnmounted(() => {
               @click="closeMobileMenu"
             >
               <span class="app-header__mobile-link-text">{{ link.name }}</span>
-              <span class="app-header__mobile-link-arrow" aria-hidden="true">‹</span>
+              <svg class="app-header__mobile-link-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                <path d="M14 6 8 12l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </RouterLink>
           </nav>
 
@@ -216,10 +218,16 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 24px 0 0;
+  padding: 50px 0 0;
   transition: padding var(--transition-normal);
   background: transparent;
   pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .app-header {
+    padding: 12px 0 0;
+  }
 }
 
 .app-header--menu-open {
@@ -239,36 +247,67 @@ onUnmounted(() => {
 .app-header__container {
   display: flex;
   justify-content: center;
+  max-width: 1248px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-/* Single Pill Header Bar */
+@media (max-width: 1247px) {
+  .app-header__container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Single Pill Header Bar Matching Figma Frame 49 */
 .app-header__bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   gap: 24px;
-  background: rgba(9, 22, 39, 0.45);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: var(--radius-full);
-  padding: 8px 24px 8px 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 40px;
+  padding: 10px 24px;
+  box-shadow: none;
   transition: all var(--transition-normal);
 }
 
+@media (max-width: 767px) {
+  .app-header__bar {
+    padding: 8px 16px;
+    gap: 16px;
+    background: rgba(9, 22, 39, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-header__bar {
+    gap: 130px;
+  }
+}
+
 .app-header--scrolled .app-header__bar {
-  background: rgba(9, 22, 39, 0.9);
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
-  padding: 6px 20px 6px 10px;
+  background: rgba(9, 22, 39, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  padding: 10px 24px;
+}
+
+@media (max-width: 767px) {
+  .app-header--scrolled .app-header__bar {
+    padding: 8px 16px;
+  }
 }
 
 .app-header--menu-open .app-header__bar {
-  background: rgba(9, 22, 39, 0.95);
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  background: rgba(9, 22, 39, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* Logo */
@@ -280,18 +319,25 @@ onUnmounted(() => {
 }
 
 .app-header__logo-img {
-  height: 44px;
-  width: auto;
+  width: 217px;
+  height: 71px;
+  max-height: 71px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
-  transition: height var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
-/* Nav Links (Desktop) */
+@media (max-width: 767px) {
+  .app-header__logo-img {
+    width: 145px;
+    height: 48px;
+  }
+}
+
+/* Nav Links (Desktop) Matching Figma Frame 36 */
 .app-header__nav {
   display: none;
   align-items: center;
-  gap: 16px;
+  gap: 32px;
 }
 
 @media (min-width: 768px) {
@@ -302,25 +348,19 @@ onUnmounted(() => {
 
 @media (min-width: 1024px) {
   .app-header__nav {
-    gap: 28px;
+    gap: 54px;
   }
 }
 
 .app-header__nav-link {
   position: relative;
-  font-size: 14px;
-  font-weight: 500;
-  color: #E8ECF1;
+  font-size: 18px;
+  font-weight: 700;
+  color: #C7C7C7;
   text-decoration: none;
-  padding: 8px 4px;
+  padding: 0 0 2px;
   transition: color var(--transition-fast);
   white-space: nowrap;
-}
-
-@media (min-width: 1024px) {
-  .app-header__nav-link {
-    font-size: 16px;
-  }
 }
 
 .app-header__nav-link:hover {
@@ -328,18 +368,13 @@ onUnmounted(() => {
 }
 
 .app-header__nav-link--active {
-  color: #FFFFFF;
+  color: #FBE9ED;
   font-weight: 700;
+  border-bottom: 1.5px solid #FBE9ED;
 }
 
 .app-header__active-underline {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: #FFFFFF;
-  border-radius: 2px;
+  display: none;
 }
 
 /* Actions */
@@ -351,18 +386,18 @@ onUnmounted(() => {
 }
 
 .app-header__cta-btn {
+  width: 145px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 12px !important;
   font-weight: 700;
-  padding: 8px 18px;
-  font-size: 14px;
-  box-shadow: 0 4px 14px rgba(214, 33, 78, 0.4);
-}
-
-@media (min-width: 1024px) {
-  .app-header__cta-btn {
-    padding: 10px 24px;
-    font-size: 15px;
-  }
+  font-size: 16px;
+  line-height: 24px;
+  color: #E8ECF1 !important;
+  box-shadow: none !important;
+  padding: 0;
 }
 
 /* Mobile Burger Toggle Button */
@@ -504,8 +539,9 @@ onUnmounted(() => {
 
 .app-header__mobile-link-arrow {
   color: var(--color-text-light);
-  font-size: 22px;
-  line-height: 1;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
   transition: transform var(--transition-fast), color var(--transition-fast);
 }
 

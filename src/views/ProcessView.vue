@@ -571,24 +571,39 @@ const steps = [
   }
 
   .process-item__row {
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 24px 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "heading action"
+      "desc desc";
+    gap: 16px;
+    padding: 20px 0;
+    align-items: center;
   }
 
   .process-item__heading {
-    order: 1;
+    grid-area: heading;
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
 
   .process-item__action {
-    order: 2;
-    margin-right: auto;
+    grid-area: action;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .process-item__desc-wrap {
-    order: 3;
+    grid-area: desc;
     width: 100%;
     max-width: 100%;
+    flex: none;
+  }
+
+  .process-item__desc {
+    font-size: 16px;
+    line-height: 26px;
   }
 
   .drawer-inner {

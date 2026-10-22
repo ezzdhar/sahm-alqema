@@ -11,14 +11,16 @@ const services = [
     title: 'تحليل السوق والمنافسين',
     titleColor: '#142F53',
     accentColor: '#D6214E',
+    watermarkColor: 'rgba(214, 33, 78, 0.2)',
     lineColor: '#E391A6',
-    dotColor: '#FF2A6D',
+    dotColor: '#FF315F',
     quote: 'قبل أن تخطو خطوتك، اعرف أين تقف',
     desc: 'من دراسة حجم السوق إلى تفكيك المنافسين، نقدم لك صورة واضحة تبني عليها قراراتك بثقة، عبر بيانات حقيقية لا تخمين فيها.',
     tools: ['Google Trends', 'Google Forms', 'Power BI'],
     btnText: 'اطلب دراسة السوق',
     btnVariant: 'primary',
     deliverablesCount: '06',
+    minHeight: '790px',
     deliverables: [
       { id: '01', text: 'تحليل السوق والمنافسين' },
       { id: '02', text: 'تحليل المنافسين المباشرين' },
@@ -34,14 +36,16 @@ const services = [
     title: 'تطوير الأعمال',
     titleColor: '#D6214E',
     accentColor: '#1A3E6F',
+    watermarkColor: 'rgba(26, 62, 111, 0.2)',
     lineColor: '#B8C3D2',
-    dotColor: '#00E5FF',
+    dotColor: '#82E2D0',
     quote: 'الفكرة الجيدة تحتاج خطة أفضل',
     desc: 'نبني معك خطة نمو بأهداف ومراحل محددة، ونطوّر نموذج عملك ليكون جاهزًا للتوسع بثقة.',
     tools: ['Business Model Canvas', 'Notion', 'Google Sheets'],
     btnText: 'ناقش مشروعك',
     btnVariant: 'dark',
     deliverablesCount: '06',
+    minHeight: '790px',
     deliverables: [
       { id: '01', text: 'خطط عمل متكاملة' },
       { id: '02', text: 'نماذج عمل (Business Model)' },
@@ -57,14 +61,16 @@ const services = [
     title: 'تصميم وبرمجة المواقع والتطبيقات',
     titleColor: '#142F53',
     accentColor: '#D6214E',
+    watermarkColor: 'rgba(214, 33, 78, 0.2)',
     lineColor: '#E391A6',
-    dotColor: '#FFD600',
+    dotColor: '#EAF44A',
     quote: 'موقعك واجهة أعمالك، فلنبنِه كما تستحق',
     desc: 'نصمم ونبرمج مواقع وتطبيقات حسب احتياج مشروعك، بتجربة استخدام سلسة ودعم كامل للعربية.',
     tools: ['Figma', 'Flutter', 'Node.js', 'Next.js'],
     btnText: 'ابدأ بناء موقعك',
     btnVariant: 'primary',
     deliverablesCount: '06',
+    minHeight: '847px',
     deliverables: [
       { id: '01', text: 'مواقع تعريفية للشركات' },
       { id: '02', text: 'متاجر إلكترونية' },
@@ -80,6 +86,7 @@ const services = [
     title: 'التسويق',
     titleColor: '#D6214E',
     accentColor: '#1A3E6F',
+    watermarkColor: 'rgba(26, 62, 111, 0.2)',
     lineColor: '#B8C3D2',
     dotColor: '#FFFFFF',
     quote: 'المحتوى الذي يُرى يُذكر، والذي يُذكر يُباع',
@@ -88,6 +95,7 @@ const services = [
     btnText: 'ابدأ حملتك التسويقية',
     btnVariant: 'dark',
     deliverablesCount: '05',
+    minHeight: '790px',
     deliverables: [
       { id: '01', text: 'فيديوهات دعائية' },
       { id: '02', text: 'موشن جرافيك ومونتاج' },
@@ -103,14 +111,16 @@ const services = [
     title: 'إدارة السوشيال ميديا',
     titleColor: '#142F53',
     accentColor: '#D6214E',
+    watermarkColor: 'rgba(214, 33, 78, 0.2)',
     lineColor: '#E391A6',
-    dotColor: '#FF2A6D',
+    dotColor: '#FF315F',
     quote: 'حضورك الرقمي هو أول انطباع عنك',
     desc: 'نفتح صفحاتك وندير محتواها وتفاعلها، ونتابع الأداء بتقارير واضحة كل شهر.',
     tools: ['Google Analytics', 'Canva', 'Meta Business Suite', 'Next.js'],
     btnText: 'عزّز حضورك الآن',
     btnVariant: 'primary',
     deliverablesCount: '05',
+    minHeight: '847px',
     deliverables: [
       { id: '01', text: 'حسابات جاهزة ومجهزة' },
       { id: '02', text: 'تقويم محتوى شهري' },
@@ -134,7 +144,7 @@ const scrollToService = (id) => {
 
 <template>
   <div class="services-view">
-    <!-- Hero Section -->
+    <!-- Hero Section Matching Figma Frame 107 & Capability Chips -->
     <section class="services-hero">
       <div class="services-hero__bg">
         <img src="/assets/hero-bg.jpg" alt="خلفية خدمات سهم القمة" class="services-hero__bg-img" />
@@ -161,7 +171,7 @@ const scrollToService = (id) => {
             :class="{ 'services-pill--active': activeFilter === s.id }"
             @click="scrollToService(s.id)"
           >
-            <span class="services-pill__dot" :style="{ backgroundColor: s.dotColor, color: s.dotColor }"></span>
+            <span class="services-pill__dot" :style="{ backgroundColor: s.dotColor }"></span>
             <span class="services-pill__num">{{ s.number }}</span>
             <span class="services-pill__title">{{ s.pillTitle || s.title }}</span>
           </button>
@@ -176,11 +186,12 @@ const scrollToService = (id) => {
         :id="s.id"
         :key="s.id"
         class="service-item"
+        :style="{ minHeight: s.minHeight }"
       >
-        <!-- Giant background watermark & glow on the far left outside container -->
+        <!-- Giant background watermark with exact 20% alpha matching Figma -->
         <div
           class="service-item__giant-num"
-          :style="{ color: s.accentColor }"
+          :style="{ color: s.watermarkColor }"
           aria-hidden="true"
         >
           {{ s.number }}
@@ -272,9 +283,10 @@ const scrollToService = (id) => {
 
               <div class="deliverables-grid">
                 <div
-                  v-for="deliv in s.deliverables"
+                  v-for="(deliv, idx) in s.deliverables"
                   :key="deliv.id"
                   class="deliverable-chip"
+                  :class="{ 'deliverable-chip--full': s.deliverables.length === 5 && idx === 4 }"
                   :style="{ borderColor: s.accentColor }"
                 >
                   <span class="deliverable-chip__text">{{ deliv.text }}</span>
@@ -295,18 +307,24 @@ const scrollToService = (id) => {
 </template>
 
 <style scoped>
+.services-view {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .highlight-red {
   color: var(--color-primary);
 }
 
-/* Services Hero */
+/* Services Hero Matching Figma Frame 107 & Capability Chips */
 .services-hero {
   position: relative;
-  min-height: 760px;
+  min-height: 900px;
   display: flex;
   align-items: flex-end;
   padding-top: 140px;
-  padding-bottom: 40px;
+  padding-bottom: 58px;
   overflow: hidden;
 }
 
@@ -343,22 +361,25 @@ const scrollToService = (id) => {
   align-items: flex-start;
   text-align: right;
   width: 100%;
-  min-height: 540px;
+  max-width: 1248px;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: 680px;
 }
 
 .services-hero__content {
-  max-width: 820px;
+  max-width: 636px;
   margin-top: 40px;
   margin-bottom: auto;
   text-align: right;
 }
 
 .services-hero__title {
-  font-size: 42px;
-  font-weight: 900;
+  font-size: 44px;
+  font-weight: 800;
   color: #FFFFFF;
-  margin-bottom: 20px;
-  line-height: 1.25;
+  margin-bottom: 24px;
+  line-height: 1.2;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -367,13 +388,15 @@ const scrollToService = (id) => {
 
 @media (min-width: 768px) {
   .services-hero__title {
-    font-size: 56px;
+    font-size: 58px;
+    line-height: 1.18;
   }
 }
 
 @media (min-width: 1024px) {
   .services-hero__title {
-    font-size: 68px;
+    font-size: 72px;
+    line-height: 82px;
   }
 }
 
@@ -387,26 +410,35 @@ const scrollToService = (id) => {
 
 .services-hero__desc {
   font-size: 18px;
-  color: #E2E8F0;
-  font-weight: 500;
-  line-height: 1.8;
-  max-width: 680px;
+  color: #C7C7C7;
+  font-weight: 700;
+  line-height: 1.6;
+  max-width: 636px;
   text-align: right;
 }
 
 @media (min-width: 768px) {
   .services-hero__desc {
     font-size: 22px;
+    line-height: 1.6;
   }
 }
 
-/* 5 Services Floating Glass Pills Matching Figma */
+@media (min-width: 1024px) {
+  .services-hero__desc {
+    font-size: 28px;
+    line-height: 42px;
+  }
+}
+
+/* 5 Services Floating Glass Pills Matching Figma Frame 97 */
 .services-pills {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  gap: 10px;
+  width: 1248px;
+  max-width: 100%;
+  gap: 12px;
   flex-wrap: nowrap;
   margin-top: 50px;
   background: transparent;
@@ -415,35 +447,69 @@ const scrollToService = (id) => {
   box-shadow: none;
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 1247px) {
+  .services-hero__container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .services-pills {
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    width: 100%;
   }
 }
 
 @media (max-width: 767px) {
+  .services-hero {
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 36px;
+  }
+
+  .services-hero__container {
+    min-height: auto;
+    gap: 20px;
+  }
+
   .services-pills {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+    overflow-x: visible;
     flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
+    margin-top: 24px;
+    padding-bottom: 0;
+  }
+
+  .services-pill {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 18px;
+    border-radius: 14px;
+    box-sizing: border-box;
+  }
+
+  .services-pill__title {
+    font-size: 13px;
+    white-space: normal;
+    text-align: right;
   }
 }
 
 .services-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  background: rgba(13, 23, 38, 0.85);
+  gap: 12px;
+  padding: 14px 35px;
+  background: rgba(5, 10, 18, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-full);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-radius: 26.5px;
+  box-shadow: none;
   cursor: pointer;
   transition: all var(--transition-fast);
   direction: rtl;
@@ -455,42 +521,42 @@ const scrollToService = (id) => {
   background: rgba(22, 38, 62, 0.92);
   border-color: rgba(255, 255, 255, 0.45);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  box-shadow: none;
 }
 
 .services-pill--active {
   background: rgba(26, 45, 75, 0.95);
   border-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 0 8px 24px rgba(0, 0, 0, 0.35);
+  box-shadow: none;
 }
 
 .services-pill__dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 4px;
   flex-shrink: 0;
-  box-shadow: 0 0 10px currentColor;
+  box-shadow: none;
 }
 
 .services-pill__num {
   font-family: var(--font-inter);
-  font-size: 13px;
-  font-weight: 600;
-  color: #94A3B8;
+  font-size: 10px;
+  font-weight: 700;
+  color: #9EABBA;
   line-height: 1;
 }
 
 .services-pill__title {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   color: #FFFFFF;
   white-space: nowrap;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 /* Detailed List matching Figma Node 303:649 & 303:650 */
 .services-list-section {
-  padding: 60px 0 100px;
+  padding: 0;
   background-color: #FEFAF2;
   position: relative;
   overflow: hidden;
@@ -498,16 +564,31 @@ const scrollToService = (id) => {
 
 .services-list-section .container {
   max-width: 1248px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 1247px) {
+  .services-list-section .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .service-item {
   position: relative;
   width: 100%;
-  padding: 60px 0 80px;
+  padding: 40px 0 60px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-.service-item:first-child {
-  padding-top: 40px;
+@media (max-width: 767px) {
+  .service-item {
+    padding: 36px 0 50px;
+    min-height: auto !important;
+  }
 }
 
 /* Top Divider Bar */
@@ -521,6 +602,13 @@ const scrollToService = (id) => {
   width: 100%;
 }
 
+@media (max-width: 767px) {
+  .service-item__top-bar {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+}
+
 .service-item__top-num {
   font-size: 80px;
   font-weight: 700;
@@ -530,15 +618,24 @@ const scrollToService = (id) => {
   user-select: none;
 }
 
+@media (max-width: 767px) {
+  .service-item__top-num {
+    font-size: 56px;
+    line-height: 1;
+  }
+}
+
 @media (min-width: 768px) {
   .service-item__top-num {
     font-size: 110px;
+    line-height: 1.2;
   }
 }
 
 @media (min-width: 1200px) {
   .service-item__top-num {
     font-size: 120px;
+    line-height: 180px;
   }
 }
 
@@ -557,13 +654,13 @@ const scrollToService = (id) => {
 /* Giant background watermark & glow at the very left of the screen */
 .service-item__giant-num {
   position: absolute;
-  top: 24px;
+  top: 174px;
   left: -74px;
   font-size: 250px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 300px;
   letter-spacing: -0.05em;
-  opacity: 0.2;
+  opacity: 1;
   user-select: none;
   pointer-events: none;
   font-family: var(--font-family);
@@ -572,17 +669,19 @@ const scrollToService = (id) => {
 
 @media (max-width: 767px) {
   .service-item__giant-num {
-    font-size: 150px;
-    left: -40px;
-    top: 20px;
+    font-size: 110px;
+    line-height: 130px;
+    left: -20px;
+    top: 10px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .service-item__giant-num {
     font-size: 200px;
+    line-height: 240px;
     left: -55px;
-    top: 20px;
+    top: 50px;
   }
 }
 
@@ -657,7 +756,7 @@ const scrollToService = (id) => {
 
 .service-item__quote-wrap {
   border-right: 2px solid;
-  padding-right: 14px;
+  padding: 10px 14px 10px 0;
   margin: 0;
 }
 
@@ -702,7 +801,7 @@ const scrollToService = (id) => {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 20px;
   width: 100%;
 }
 
@@ -723,7 +822,7 @@ const scrollToService = (id) => {
 }
 
 .tool-chip {
-  padding: 10px 16px;
+  padding: 12px 16px;
   background-color: #FFF8F2;
   border: 1px solid;
   border-radius: 10px;
@@ -731,6 +830,7 @@ const scrollToService = (id) => {
   font-weight: 700;
   color: #393C40;
   font-family: var(--font-family);
+  text-align: left;
   transition: all var(--transition-fast);
 }
 
@@ -739,7 +839,7 @@ const scrollToService = (id) => {
 }
 
 .service-item__action {
-  margin-top: 10px;
+  margin-top: 0;
   width: 100%;
 }
 
@@ -751,15 +851,29 @@ const scrollToService = (id) => {
   font-size: 16px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  box-shadow: none !important;
+}
+
+@media (max-width: 767px) {
+  .service-item__btn {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
 /* Left Column (Deliverables - ماذا نقدم) */
 .service-item__deliverables {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 54px;
   width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .service-item__deliverables {
+    width: 486px;
+    margin-top: 22px;
+  }
 }
 
 .deliverables-header {
@@ -795,14 +909,23 @@ const scrollToService = (id) => {
 
 .deliverables-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px 20px;
+  grid-template-columns: 1fr;
+  gap: 12px;
   width: 100%;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 640px) {
   .deliverables-grid {
-    gap: 30px 26px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .deliverables-grid {
+    width: 486px;
+    grid-template-columns: repeat(2, 230px);
+    gap: 20px 26px;
   }
 }
 
@@ -811,13 +934,19 @@ const scrollToService = (id) => {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  height: 52px;
-  padding: 0 24px;
+  min-height: 52px;
+  padding: 14px 24px;
   background-color: #FFF8F2;
   border: 1px solid;
   border-radius: 20px;
   direction: rtl;
   transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.deliverable-chip--full {
+  grid-column: 1 / -1;
+  width: 100%;
 }
 
 .deliverable-chip:hover {
@@ -830,15 +959,14 @@ const scrollToService = (id) => {
   font-weight: 700;
   color: #6D6F73;
   font-family: var(--font-family);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 14.4px;
 }
 
 .deliverable-chip__num {
   font-size: 10px;
   font-weight: 700;
   font-family: var(--font-inter);
+  line-height: 12.1px;
   flex-shrink: 0;
 }
 </style>
