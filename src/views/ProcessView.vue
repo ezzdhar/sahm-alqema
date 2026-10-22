@@ -70,13 +70,13 @@ const steps = [
 <template>
   <div class="process-view">
     <!-- Background Watermark Shield -->
-    <div class="process-watermark" aria-hidden="true">
-      <img src="/assets/shield-watermark.png" alt="" class="process-watermark__img" />
+    <div class="process-watermark" data-name="logo_dark_background 1" aria-hidden="true">
+      <img src="/assets/shield-watermark.png" alt="White logo" data-name="White logo" class="process-watermark__img" />
     </div>
 
     <div class="container process-container">
       <!-- Section Header -->
-      <header class="process-header">
+      <header class="process-header" data-name="Frame 122">
         <h1 class="process-header__title">
           من <span class="gradient-idea">الفكرة</span> إلى <span class="gradient-execution">التنفيذ</span>، بخطوات <span class="gradient-clear">واضحة</span>
         </h1>
@@ -86,108 +86,105 @@ const steps = [
       </header>
 
       <!-- Steps List -->
-      <section class="process-list" aria-label="مراحل آلية العمل">
-        <article
-          v-for="(step, index) in steps"
-          :key="step.number"
-          class="process-item"
-          :class="{ 'process-item--expanded': expandedStep === index }"
-          tabindex="0"
-          role="button"
-          :aria-expanded="expandedStep === index"
-          :aria-label="`مرحلة ${step.number}: ${step.title}`"
-          @click="toggleStep(index)"
-          @keydown.enter.prevent="toggleStep(index)"
-          @keydown.space.prevent="toggleStep(index)"
-        >
-          <!-- Top Divider Line -->
-          <div class="process-item__divider" aria-hidden="true"></div>
+      <section class="process-list" data-name="Frame 126" aria-label="مراحل آلية العمل">
+        <template v-for="(step, index) in steps" :key="step.number">
+          <!-- Separator Line matching Figma Line 24 -->
+          <div class="process-divider line-24" data-name="Line 24" aria-hidden="true"></div>
 
-          <!-- Main Row -->
-          <div class="process-item__row">
-            <!-- Right: Number + Title -->
-            <div class="process-item__heading">
-              <span class="process-item__number">{{ step.number }}</span>
-              <h2 class="process-item__title">{{ step.title }}</h2>
-            </div>
+          <article
+            class="process-item"
+            :class="{ 'process-item--expanded': expandedStep === index }"
+            tabindex="0"
+            role="button"
+            :aria-expanded="expandedStep === index"
+            :aria-label="`مرحلة ${step.number}: ${step.title}`"
+            @click="toggleStep(index)"
+            @keydown.enter.prevent="toggleStep(index)"
+            @keydown.space.prevent="toggleStep(index)"
+          >
+            <!-- Main Row -->
+            <div class="process-item__row">
+              <!-- Right: Number + Title -->
+              <div class="process-item__heading">
+                <span class="process-item__number">{{ step.number }}</span>
+                <h2 class="process-item__title">{{ step.title }}</h2>
+              </div>
 
-            <!-- Middle: Description -->
-            <div class="process-item__desc-wrap">
-              <p class="process-item__desc">{{ step.desc }}</p>
-            </div>
+              <!-- Middle: Description -->
+              <div class="process-item__desc-wrap">
+                <p class="process-item__desc">{{ step.desc }}</p>
+              </div>
 
-            <!-- Left: 65x65 Arrow Button -->
-            <div class="process-item__action">
-              <button
-                type="button"
-                class="process-item__arrow-btn"
-                :aria-label="`تفاصيل مرحلة ${step.title}`"
-                tabindex="-1"
-              >
-                <svg
-                  width="65"
-                  height="65"
-                  viewBox="0 0 65 65"
-                  fill="none"
-                  class="process-item__arrow-svg"
-                  aria-hidden="true"
+              <!-- Left: 65x65 Arrow Button -->
+              <div class="process-item__action">
+                <button
+                  type="button"
+                  class="process-item__arrow-btn"
+                  :aria-label="`تفاصيل مرحلة ${step.title}`"
+                  tabindex="-1"
                 >
-                  <circle
-                    cx="32.5"
-                    cy="32.5"
-                    r="31"
-                    class="arrow-circle"
-                  />
-                  <!-- Arrow pointing left (rotates to down when expanded) -->
-                  <path
-                    d="M41 32.5H24M31 24.5L23 32.5L31 40.5"
-                    class="arrow-stem"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    width="65"
+                    height="65"
+                    viewBox="0 0 65 65"
+                    fill="none"
+                    class="process-item__arrow-svg"
+                    aria-hidden="true"
+                  >
+                    <circle
+                      cx="32.5"
+                      cy="32.5"
+                      r="31"
+                      class="arrow-circle"
+                    />
+                    <!-- Arrow pointing left (rotates to down when expanded) -->
+                    <path
+                      d="M41 32.5H24M31 24.5L23 32.5L31 40.5"
+                      class="arrow-stem"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
 
-          <!-- Collapsible Drawer matching Figma Frame 124-127 -->
-          <transition name="drawer">
-            <div v-if="expandedStep === index" class="process-item__drawer">
-              <div class="drawer-inner">
-                <h3 class="drawer-title">{{ step.deliverablesTitle }}</h3>
-                <div class="drawer-columns">
-                  <!-- Col 1 (Right in RTL) -->
-                  <div class="drawer-col">
-                    <div
-                      v-for="(item, iIdx) in step.deliverablesCol1"
-                      :key="iIdx"
-                      class="drawer-item"
-                    >
-                      <span class="drawer-bullet" aria-hidden="true"></span>
-                      <span class="drawer-text">{{ item }}</span>
+            <!-- Collapsible Drawer matching Figma Frame 124-127 -->
+            <transition name="drawer">
+              <div v-if="expandedStep === index" class="process-item__drawer">
+                <div class="drawer-inner">
+                  <h3 class="drawer-title">{{ step.deliverablesTitle }}</h3>
+                  <div class="drawer-columns">
+                    <!-- Col 1 (Right in RTL) -->
+                    <div class="drawer-col">
+                      <div
+                        v-for="(item, iIdx) in step.deliverablesCol1"
+                        :key="iIdx"
+                        class="drawer-item"
+                      >
+                        <span class="drawer-bullet" aria-hidden="true"></span>
+                        <span class="drawer-text">{{ item }}</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <!-- Col 2 (Left in RTL) -->
-                  <div class="drawer-col">
-                    <div
-                      v-for="(item, iIdx) in step.deliverablesCol2"
-                      :key="iIdx"
-                      class="drawer-item"
-                    >
-                      <span class="drawer-bullet" aria-hidden="true"></span>
-                      <span class="drawer-text">{{ item }}</span>
+                    <!-- Col 2 (Left in RTL) -->
+                    <div class="drawer-col">
+                      <div
+                        v-for="(item, iIdx) in step.deliverablesCol2"
+                        :key="iIdx"
+                        class="drawer-item"
+                      >
+                        <span class="drawer-bullet" aria-hidden="true"></span>
+                        <span class="drawer-text">{{ item }}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </transition>
-        </article>
-
-        <!-- Final Bottom Divider -->
-        <div class="process-list__bottom-divider" aria-hidden="true"></div>
+            </transition>
+          </article>
+        </template>
       </section>
     </div>
   </div>
@@ -199,7 +196,7 @@ const steps = [
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  padding: 210px 0 120px;
+  padding: 240px 0 120px;
 }
 
 /* Background Watermark Shield */
@@ -208,8 +205,8 @@ const steps = [
   top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  width: 956px;
-  max-width: 90vw;
+  width: 1804px;
+  max-width: none;
   opacity: 0.5;
   pointer-events: none;
   z-index: 0;
@@ -229,13 +226,16 @@ const steps = [
   padding: 0 24px;
 }
 
-/* Header Aligned to Right */
+/* Header Aligned to Right matching Figma Frame 122 */
 .process-header {
   max-width: 568px;
   margin-right: 0;
   margin-left: auto;
-  margin-bottom: 72px;
+  margin-bottom: 38px;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .process-header__title {
@@ -244,7 +244,7 @@ const steps = [
   font-size: 56px;
   line-height: 84px;
   color: #040A12;
-  margin-bottom: 20px;
+  margin: 0;
   letter-spacing: -0.5px;
 }
 
@@ -279,6 +279,7 @@ const steps = [
   font-size: 28px;
   line-height: 42px;
   color: #616161;
+  margin: 0;
 }
 
 /* Steps List */
@@ -306,18 +307,13 @@ const steps = [
   outline-offset: 4px;
 }
 
-/* Divider Lines */
-.process-item__divider,
-.process-list__bottom-divider {
+/* Divider Lines matching Figma Line 24 */
+.process-divider {
   width: 100%;
-  height: 2px;
+  height: 1px;
   background-color: #DBDBDB;
-  transition: background-color var(--transition-normal);
-}
-
-.process-item:hover .process-item__divider,
-.process-item--expanded .process-item__divider {
-  background-color: #D6214E;
+  border: none;
+  display: block;
 }
 
 /* Main Row */
@@ -342,11 +338,12 @@ const steps = [
   font-family: var(--font-family);
   font-weight: 700;
   font-size: 90px;
-  line-height: 1;
+  line-height: 135px;
   color: #D6214E;
   user-select: none;
   min-width: 95px;
-  text-align: right;
+  text-align: left;
+  direction: ltr;
   transition: transform var(--transition-normal);
 }
 
@@ -522,35 +519,6 @@ const steps = [
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 1200px) {
-  .process-header__title {
-    font-size: 46px;
-    line-height: 70px;
-  }
-
-  .process-header__desc {
-    font-size: 24px;
-    line-height: 36px;
-  }
-
-  .process-item__number {
-    font-size: 76px;
-  }
-
-  .process-item__title {
-    font-size: 28px;
-  }
-
-  .process-item__desc {
-    font-size: 20px;
-    line-height: 32px;
-  }
-
-  .drawer-inner {
-    margin-right: 140px;
-  }
-}
-
 @media (max-width: 900px) {
   .process-view {
     padding-top: 150px;

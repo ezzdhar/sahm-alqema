@@ -106,104 +106,104 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <div class="contact-view">
-    <!-- Hero Header -->
+  <div class="contact-view" data-name="Desktop - 14">
+    <!-- Hero Section encompassing Heading and Cards -->
     <section class="contact-hero">
       <div class="contact-hero__bg">
         <img src="/assets/contact-page-bg.jpg" alt="خلفية مدينة الرياض" class="contact-hero__bg-img" />
         <div class="contact-hero__overlay"></div>
       </div>
 
-      <div class="container contact-hero__container">
-        <div class="contact-hero__content">
-          <h1 class="contact-hero__title">
+      <div class="container contact-hero__container" data-name="Container">
+        <!-- Section Heading -->
+        <div class="contact-hero__heading" data-name="SectionHeading">
+          <h1 class="contact-hero__title" data-name="Heading 2">
             <span class="highlight-red">ابدأ</span> مشروعك اليوم
           </h1>
-          <p class="contact-hero__desc">
+          <p class="contact-hero__desc" data-name="Paragraph">
             تواصل معنا الآن وسيرد عليك فريقنا خلال 24 ساعة لمناقشة احتياجاتك وتقديم أفضل الحلول
           </p>
         </div>
-      </div>
-    </section>
 
-    <!-- Main Card Section (Overlapping Hero) -->
-    <section class="contact-main-section">
-      <div class="container">
-        <div class="contact-card">
-          <!-- Right: Info Panel (Dark Blue) -->
-          <div class="contact-info-panel">
+        <!-- Cards Container -->
+        <div class="contact-cards" data-name="Container">
+          <!-- Right Card: Contact Info Panel (In RTL, first column is on Right) -->
+          <div class="contact-info-panel" data-name="Container">
             <div class="contact-info-panel__top">
-              <h2 class="contact-info-panel__title">معلومات التواصل</h2>
-              <p class="contact-info-panel__subtitle">
-                نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك الرقمية.
+              <h2 class="contact-info-panel__title" data-name="معلومات التواصل">معلومات التواصل</h2>
+              <p class="contact-info-panel__subtitle" data-name="Paragraph">
+                نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك.
               </p>
 
-              <div class="contact-info-list">
-                <a href="tel:+966500000000" class="contact-info-item">
-                  <span class="contact-info-icon" aria-hidden="true">
+              <div class="contact-info-list" data-name="Container">
+                <!-- Phone -->
+                <a href="tel:+966500000000" class="contact-info-item" data-name="Container">
+                  <span class="contact-info-icon" aria-hidden="true" data-name="Container">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                     </svg>
                   </span>
-                  <span class="contact-info-text" dir="ltr">+966 50 000 0000</span>
+                  <span class="contact-info-text" dir="ltr" data-name="+966 50 000 0000">+966 50 000 0000</span>
                 </a>
 
-                <a href="mailto:info@sahmaqemma.com" class="contact-info-item">
-                  <span class="contact-info-icon" aria-hidden="true">
+                <!-- Email -->
+                <a href="mailto:info@sahmaqemma.com" class="contact-info-item" data-name="Container">
+                  <span class="contact-info-icon" aria-hidden="true" data-name="Container">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                     </svg>
                   </span>
-                  <span class="contact-info-text">info@sahmaqemma.com</span>
+                  <span class="contact-info-text" data-name="info@sahmaqemma.com">info@sahmaqemma.com</span>
                 </a>
 
-                <div class="contact-info-item">
-                  <span class="contact-info-icon" aria-hidden="true">
+                <!-- Location -->
+                <div class="contact-info-item" data-name="Container">
+                  <span class="contact-info-icon" aria-hidden="true" data-name="Container">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                       <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                   </span>
-                  <span class="contact-info-text">الرياض، المملكة العربية السعودية</span>
+                  <span class="contact-info-text" data-name="الرياض، المملكة العربية السعودية">الرياض، المملكة العربية السعودية</span>
                 </div>
               </div>
             </div>
 
             <!-- Why Choose Us List -->
-            <div class="contact-why-us">
-              <h3 class="contact-why-us__title">لماذا تختارنا؟</h3>
-              <ul class="contact-why-us__list">
-                <li class="contact-why-us__item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <div class="contact-why-us" data-name="Container">
+              <h3 class="contact-why-us__title" data-name="لماذا تختارنا؟">لماذا تختارنا؟</h3>
+              <ul class="contact-why-us__list" data-name="Container">
+                <li class="contact-why-us__item" data-name="Container">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C11E46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>استشارة مجانية بدون التزام</span>
+                  <span data-name="استشارة مجانية بدون التزام">استشارة مجانية بدون التزام</span>
                 </li>
-                <li class="contact-why-us__item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <li class="contact-why-us__item" data-name="Container">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C11E46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>تسليم في المواعيد المحددة</span>
+                  <span data-name="تسليم في المواعيد المحددة">تسليم في المواعيد المحددة</span>
                 </li>
-                <li class="contact-why-us__item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <li class="contact-why-us__item" data-name="Container">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C11E46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>فريق سعودي متخصص</span>
+                  <span data-name="فريق سعودي متخصص">فريق سعودي متخصص</span>
                 </li>
-                <li class="contact-why-us__item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <li class="contact-why-us__item" data-name="Container">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C11E46" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span>دعم مستمر ما بعد التسليم</span>
+                  <span data-name="دعم ما بعد التسليم">دعم ما بعد التسليم</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <!-- Left: Form Panel (White) -->
-          <div class="contact-form-panel">
+          <!-- Left Card: Form Panel (White Box) -->
+          <div class="contact-form-panel" data-name="Form">
             <div v-if="isSubmitted" class="contact-success" role="alert">
               <div class="contact-success__icon">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -227,7 +227,6 @@ const handleSubmit = async () => {
                   v-model="form.name"
                   label="الاسم الكامل"
                   placeholder="أدخل اسمك الكامل"
-                  required
                   :error="errors.name"
                 />
                 <InputField
@@ -235,7 +234,6 @@ const handleSubmit = async () => {
                   label="رقم الجوال"
                   placeholder="05XXXXXXXX"
                   type="tel"
-                  required
                   :error="errors.phone"
                 />
               </div>
@@ -246,7 +244,6 @@ const handleSubmit = async () => {
                 label="البريد الإلكتروني"
                 placeholder="example@company.com"
                 type="email"
-                required
                 :error="errors.email"
               />
 
@@ -256,7 +253,6 @@ const handleSubmit = async () => {
                 label="نوع الخدمة المطلوبة"
                 placeholder="اختر الخدمة المطلوبة"
                 :options="serviceOptions"
-                required
                 :error="errors.service"
               />
 
@@ -295,21 +291,21 @@ const handleSubmit = async () => {
 }
 
 .contact-view {
-  background-color: var(--color-bg-light);
+  background-color: #091627;
   min-height: 100vh;
 }
 
 /* Contact Hero */
 .contact-hero {
   position: relative;
-  min-height: 480px;
+  min-height: 980px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding-top: 130px;
-  padding-bottom: 120px;
+  padding-top: 246px; /* Difference 3: From the top: 246px */
+  padding-bottom: 90px;
   overflow: hidden;
-  text-align: center;
+  background-color: #091627;
 }
 
 .contact-hero__bg {
@@ -329,95 +325,147 @@ const handleSubmit = async () => {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(9, 22, 39, 0.75) 0%,
-    rgba(9, 22, 39, 0.6) 50%,
-    rgba(9, 22, 39, 0.9) 100%
+    rgba(9, 22, 39, 0.85) 0%,
+    rgba(9, 22, 39, 0.75) 45%,
+    #091627 100%
   );
 }
 
 .contact-hero__container {
   position: relative;
-  z-index: 1;
+  z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Difference 4: Gap: 30px */
 }
 
-.contact-hero__content {
-  max-width: 760px;
+@media (min-width: 1140px) {
+  .contact-hero__container {
+    padding: 0;
+  }
+}
+
+/* Section Heading */
+.contact-hero__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px; /* Difference 5: Gap: 20px */
+  padding: 0; /* Difference 5: Padding: 0 */
+  width: 100%;
+  max-width: 1100px; /* Difference 6 & 8: Width: 1100px */
   margin: 0 auto;
 }
 
 .contact-hero__title {
-  font-size: 52px;
+  width: 100%;
+  max-width: 1100px;
+  font-family: var(--font-family);
+  font-size: 56px; /* Difference 7: Font size: 56px */
+  line-height: 72px; /* Difference 7: Line height: 72px */
   font-weight: 800;
-  color: #FFFFFF;
-  margin-bottom: 16px;
+  color: #F8E9ED; /* Difference 7: Text color: #F8E9ED */
+  text-align: center;
+  margin: 0;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
+  .contact-hero {
+    padding-top: 140px;
+    padding-bottom: 60px;
+  }
+
   .contact-hero__title {
-    font-size: 64px;
+    font-size: 38px;
+    line-height: 50px;
   }
 }
 
 .contact-hero__desc {
-  font-size: 20px;
-  color: #E8ECF1;
-  font-weight: 500;
-  line-height: 1.6;
+  width: 100%;
+  max-width: 1100px;
+  font-family: var(--font-family);
+  font-size: 28px; /* Difference 9: Font size: 28px */
+  line-height: 42px; /* Difference 9: Line height: 42px */
+  font-weight: 700; /* Difference 9: Weight: 700 */
+  color: #F8E9ED;
+  text-align: center;
+  margin: 0;
 }
 
-/* Main Overlapping Card */
-.contact-main-section {
-  position: relative;
-  z-index: 10;
-  margin-top: -80px;
-  padding-bottom: 120px;
-}
-
-.contact-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  background: #FFFFFF;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(9, 22, 39, 0.12);
-  border: 1px solid #E8ECF1;
-}
-
-@media (min-width: 1024px) {
-  .contact-card {
-    grid-template-columns: 1fr 1.35fr;
+@media (max-width: 767px) {
+  .contact-hero__desc {
+    font-size: 18px;
+    line-height: 28px;
   }
 }
 
-/* Info Panel (Dark Blue) */
+/* Cards Grid (Two separate cards) */
+.contact-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .contact-cards {
+    grid-template-columns: 421px 631px; /* Right: Info 421px, Left: Form 631px in RTL */
+    gap: 48px; /* Difference 11: 48px gap */
+    align-items: start;
+  }
+}
+
+/* Right Card: Info Panel (Dark Blue) */
 .contact-info-panel {
-  background: linear-gradient(145deg, #091627 0%, #102644 100%);
+  background: #091627;
   color: #FFFFFF;
-  padding: 50px 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 40px;
+  min-height: 576px; /* Difference 11: Size 421 x 576px */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .contact-info-panel {
+    width: 421px;
+    height: 576px;
+  }
 }
 
 .contact-info-panel__title {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 12px;
+  font-family: var(--font-cairo);
+  font-size: 20.8px; /* Difference 14: Font size 20.8px */
+  line-height: 31.2px; /* Difference 14: Line height 31.2px */
+  font-weight: 700;
+  margin-bottom: 8px;
   color: #FFFFFF;
 }
 
 .contact-info-panel__subtitle {
-  font-size: 16px;
-  color: #9EABBA;
-  line-height: 1.6;
-  margin-bottom: 36px;
+  font-family: var(--font-family);
+  font-size: 15.2px; /* Difference 16: Font size 15.2px */
+  line-height: 22.8px;
+  color: #F5F5F5; /* Difference 16: Text color #F5F5F5 */
+  margin-bottom: 24px;
 }
 
 .contact-info-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .contact-info-item {
@@ -426,8 +474,6 @@ const handleSubmit = async () => {
   gap: 16px;
   text-decoration: none;
   color: #FFFFFF;
-  font-size: 16px;
-  font-weight: 600;
   transition: transform var(--transition-fast);
 }
 
@@ -436,34 +482,48 @@ const handleSubmit = async () => {
 }
 
 .contact-info-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: var(--color-primary);
+  width: 40px; /* Difference 19, 23, 27: Size 40 x 40px */
+  height: 40px;
+  border-radius: 8px;
+  background: #C11E46; /* Difference 19, 23, 27: #C11E46 */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(214, 33, 78, 0.35);
+  box-shadow: none; /* Difference 19, 23, 27: Shadow none */
+  color: #E8ECF1; /* Difference 20, 24, 28: Icon color #E8ECF1 */
 }
 
+.contact-info-text {
+  font-size: 15.2px; /* Difference 18, 22, 26: Font size 15.2px */
+  line-height: 22.8px; /* Difference 18, 22, 26: Line height 22.8px */
+  font-weight: 400; /* Difference 18, 22, 26: Weight 400 */
+  color: #FFFFFF;
+}
+
+/* Why Choose Us List */
 .contact-why-us {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 30px;
+  border: none; /* Difference 29: Border none */
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .contact-why-us__title {
-  font-size: 18px;
+  font-family: var(--font-cairo);
+  font-size: 14.4px; /* Difference 32: Font size 14.4px */
+  line-height: 21.6px; /* Difference 32: Line height 21.6px */
   font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.8); /* Difference 32: Text color #FFFFFF 80% */
+  margin-bottom: 4px;
 }
 
 .contact-why-us__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .contact-why-us__item {
@@ -471,21 +531,29 @@ const handleSubmit = async () => {
   align-items: center;
   gap: 10px;
   font-size: 14px;
-  color: #CBD5E1;
-  font-weight: 500;
+  line-height: 22.4px;
+  color: #FFFFFF; /* Difference 34, 36, 38: Text color #FFFFFF */
+  font-weight: 400; /* Difference 34, 36, 38: Weight 400 */
 }
 
-/* Form Panel */
+/* Left Card: Form Panel (White) */
 .contact-form-panel {
-  padding: 50px 40px;
-  display: flex;
-  align-items: center;
   background-color: #FFFFFF;
+  border-radius: 16px; /* Difference 42: Corners: 16px */
+  border: 0.8px solid #E0EBF5; /* Difference 42: Border: 0.8px solid #E0EBF5 */
+  padding: 40px; /* Difference 42: Padding: 40px */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 1024px) {
   .contact-form-panel {
-    padding: 30px 20px;
+    width: 631px; /* Difference 42: Width 631px */
+    min-height: 576px;
+    height: 600px; /* Difference 41: Height 600px */
   }
 }
 
@@ -493,13 +561,13 @@ const handleSubmit = async () => {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 18px;
 }
 
 .contact-form__row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 16px;
 }
 
 @media (min-width: 640px) {
@@ -509,7 +577,7 @@ const handleSubmit = async () => {
 }
 
 .contact-form__submit {
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 /* Success Message */

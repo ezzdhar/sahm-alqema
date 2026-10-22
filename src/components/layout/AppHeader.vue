@@ -86,7 +86,7 @@ onUnmounted(() => {
     }"
   >
     <div class="container app-header__container">
-      <div class="app-header__bar">
+      <div class="app-header__bar" data-name="Frame 49">
         <!-- Right: Logo (in RTL, first visual item on right) -->
         <RouterLink to="/" class="app-header__logo" @click="closeMobileMenu">
           <img
@@ -113,7 +113,7 @@ onUnmounted(() => {
         <!-- Left: CTA Button & Mobile Toggle -->
         <div class="app-header__actions">
           <AppButton to="/contact" variant="primary" size="md" class="app-header__cta-btn">
-            أبدأ الآن
+            ابدأ الآن
           </AppButton>
 
           <!-- Mobile Burger Toggle Button -->
@@ -197,7 +197,7 @@ onUnmounted(() => {
 
           <div class="app-header__mobile-cta">
             <AppButton to="/contact" variant="primary" size="lg" block @click="closeMobileMenu">
-              أبدأ الآن
+              ابدأ الآن
             </AppButton>
           </div>
 
@@ -259,20 +259,20 @@ onUnmounted(() => {
   }
 }
 
-/* Single Pill Header Bar Matching Figma Frame 49 - Always Dark */
+/* Single Pill Header Bar Matching Figma Frame 49 */
 .app-header__bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   gap: 24px;
-  background: rgba(9, 22, 39, 0.94);
+  background: rgba(30, 32, 44, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: none;
   border-radius: 40px;
   padding: 10px 24px;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: none;
   transition: all var(--transition-normal);
 }
 
@@ -280,21 +280,21 @@ onUnmounted(() => {
   .app-header__bar {
     padding: 8px 16px;
     gap: 16px;
-    background: rgba(9, 22, 39, 0.94);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(30, 32, 44, 0.95);
+    border: none;
   }
 }
 
 @media (min-width: 1024px) {
   .app-header__bar {
-    gap: 130px;
+    gap: 32px;
   }
 }
 
 .app-header--scrolled .app-header__bar {
-  background: rgba(9, 22, 39, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(30, 32, 44, 0.98);
+  border: none;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
   padding: 10px 24px;
 }
 
@@ -305,8 +305,8 @@ onUnmounted(() => {
 }
 
 .app-header--menu-open .app-header__bar {
-  background: rgba(9, 22, 39, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(30, 32, 44, 0.98);
+  border: none;
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
 }
 

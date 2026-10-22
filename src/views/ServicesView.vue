@@ -320,12 +320,23 @@ const scrollToService = (id) => {
 /* Services Hero Matching Figma Frame 107 & Capability Chips */
 .services-hero {
   position: relative;
-  min-height: 900px;
+  height: 100vh;
+  min-height: 680px;
+  max-height: 960px;
   display: flex;
   align-items: flex-end;
-  padding-top: 140px;
-  padding-bottom: 58px;
+  padding-top: 130px;
+  padding-bottom: 68px;
   overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .services-hero {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 48px;
+  }
 }
 
 .services-hero__bg {
@@ -362,14 +373,14 @@ const scrollToService = (id) => {
   text-align: right;
   width: 100%;
   max-width: 1248px;
+  height: 100%;
   padding-left: 0;
   padding-right: 0;
-  min-height: 680px;
 }
 
 .services-hero__content {
   max-width: 636px;
-  margin-top: 40px;
+  margin-top: auto;
   margin-bottom: auto;
   text-align: right;
 }
@@ -440,7 +451,8 @@ const scrollToService = (id) => {
   max-width: 100%;
   gap: 12px;
   flex-wrap: nowrap;
-  margin-top: 50px;
+  margin-top: 24px;
+  margin-bottom: 8px;
   background: transparent;
   border: none;
   padding: 0;
