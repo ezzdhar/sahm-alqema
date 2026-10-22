@@ -315,7 +315,8 @@ const serviceHexagonsBottom = [
         <!-- Right Column: Info & Action -->
         <div class="steps-section__intro">
           <h2 class="steps-section__title">
-            <span class="highlight-red">أربع</span> خطوات نحو القمة
+            <span class="steps-title-line"><span class="highlight-red">أربع</span> خطوات</span>
+            <span class="steps-title-line">نحو القمة</span>
           </h2>
           <p class="steps-section__desc">
             رحلة متكاملة نمشيها معك، من دراسة السوق حتى الانطلاق الفعلي وتحقيق النمو
@@ -370,9 +371,9 @@ const serviceHexagonsBottom = [
     <section class="differentiators-section">
       <div class="container differentiators-section__container">
         <div class="differentiators-section__header">
-          <h2 class="differentiators-section__badge">ما يميّزنا عن غيرنا</h2>
+          <h2 class="differentiators-section__main-title">ما يميّزنا عن غيرنا</h2>
           <p class="differentiators-section__title">
-            لأن نجاحك يبدأ بشريك يفهمك، ويخطط معك، وينفذ بإتقان
+            لأن نجاحك يبدأ بشريك <span class="highlight-navy">يفهمك</span>، ويخطط معك، <span class="highlight-navy">وينفذ</span> بإتقان
           </p>
         </div>
 
@@ -481,8 +482,8 @@ const serviceHexagonsBottom = [
 @media (max-width: 768px) {
   .hero-section {
     min-height: auto;
-    padding-top: 130px;
-    padding-bottom: 0;
+    padding-top: 110px;
+    padding-bottom: 40px;
   }
 }
 
@@ -540,7 +541,7 @@ const serviceHexagonsBottom = [
   font-size: 72px;
   font-weight: 900;
   line-height: 82.8px;
-  margin-bottom: 0;
+  margin-bottom: 24px;
   letter-spacing: -0.5px;
   text-align: right;
   display: flex;
@@ -548,9 +549,14 @@ const serviceHexagonsBottom = [
 }
 
 @media (max-width: 768px) {
+  .hero-section__content {
+    gap: 24px;
+  }
+
   .hero-section__title {
     font-size: 44px;
     line-height: 52px;
+    margin-bottom: 18px;
   }
 }
 
@@ -605,20 +611,26 @@ const serviceHexagonsBottom = [
 }
 
 .hero-btn--outline {
-  width: auto;
-  height: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: none !important;
-  border-radius: 0 !important;
-  background: transparent !important;
+  padding: 14px 34px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+  border-radius: 12px !important;
+  background: rgba(9, 22, 39, 0.45) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #FFFFFF !important;
-  padding: 14px 24px !important;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  transition: all var(--transition-normal);
 }
 
 .hero-btn--outline:hover {
-  opacity: 0.85;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-2px);
 }
 
 /* Floating Feature Bar on the boundary between Hero and Services */
@@ -628,7 +640,12 @@ const serviceHexagonsBottom = [
   width: 100%;
   margin-top: auto;
   margin-bottom: 0;
-  transform: translateY(50%);
+}
+
+@media (min-width: 1024px) {
+  .hero-features {
+    transform: translateY(50%);
+  }
 }
 
 .hero-features__bar {
@@ -723,7 +740,7 @@ const serviceHexagonsBottom = [
 
 @media (max-width: 768px) {
   .services-overview {
-    padding-top: 180px;
+    padding-top: 60px;
     padding-bottom: 60px;
   }
 }
@@ -846,10 +863,10 @@ const serviceHexagonsBottom = [
 
 .services-hex-card:hover .services-hex-card__img,
 .services-hex-card:focus-visible .services-hex-card__img {
-  filter: brightness(0.6) contrast(1.08);
+  filter: brightness(0.85) contrast(1.02);
 }
 
-/* Dark Overlay Mask Matching Attached Figma Design */
+/* Overlay Mask Matching Figma Design */
 .services-hex-card__overlay {
   position: absolute;
   inset: 0;
@@ -860,8 +877,7 @@ const serviceHexagonsBottom = [
   padding: 20px;
   text-align: center;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background: linear-gradient(180deg, rgba(16, 32, 56, 0.76) 0%, rgba(10, 22, 40, 0.88) 100%);
-  backdrop-filter: blur(2px);
+  background: linear-gradient(180deg, rgba(16, 32, 56, 0.4) 0%, rgba(10, 22, 40, 0.65) 100%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -958,26 +974,37 @@ const serviceHexagonsBottom = [
 .steps-section__intro {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 28px;
   text-align: right;
+  align-items: flex-start;
 }
 
 .steps-section__title {
   font-size: 48px;
   font-weight: 800;
   line-height: 60px;
-  color: #FBE9ED;
+  color: #FFFFFF;
+  margin: 0;
+  text-align: right;
+}
+
+.steps-title-line {
+  display: block;
 }
 
 .steps-section__desc {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   color: #EBEBEB;
-  line-height: 36px;
+  line-height: 34px;
+  text-align: right;
+  max-width: 380px;
+  margin: 0;
 }
 
 .steps-section__action {
   margin-top: 10px;
+  text-align: right;
 }
 
 .steps-btn {
@@ -990,6 +1017,51 @@ const serviceHexagonsBottom = [
   font-size: 16px;
   color: #FFFFFF !important;
   cursor: pointer;
+  display: inline-block;
+  transition: all var(--transition-normal);
+}
+
+.steps-btn:hover {
+  background-color: var(--color-primary-hover) !important;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .steps-section {
+    padding: 60px 0;
+  }
+
+  .steps-section__container {
+    gap: 40px;
+  }
+
+  .steps-section__intro {
+    align-items: flex-start;
+    text-align: right;
+    gap: 20px;
+  }
+
+  .steps-section__title {
+    font-size: 38px;
+    line-height: 48px;
+    text-align: right;
+  }
+
+  .steps-section__desc {
+    font-size: 17px;
+    line-height: 28px;
+    text-align: right;
+    max-width: 100%;
+  }
+
+  .steps-section__action {
+    text-align: right;
+    width: 100%;
+  }
+
+  .steps-btn {
+    width: auto;
+  }
 }
 
 .steps-section__cards {
@@ -1075,27 +1147,34 @@ const serviceHexagonsBottom = [
 
 .differentiators-section__header {
   text-align: center;
-  max-width: 464px;
+  max-width: 580px;
   margin: 0 auto 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.differentiators-section__badge {
-  display: inline-block;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 24px;
+.differentiators-section__main-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 60px;
   color: var(--color-primary);
-  border: 1.5px solid var(--color-primary);
-  border-radius: 9999px;
-  padding: 6px 20px;
-  margin-bottom: 20px;
+  margin: 0;
+  border: none;
+  padding: 0;
 }
 
 .differentiators-section__title {
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 26px;
+  font-weight: 700;
   color: #696969;
-  line-height: 48px;
+  line-height: 42px;
+  margin: 0;
+}
+
+.differentiators-section__title .highlight-navy {
+  color: #1A3E6F;
+  font-weight: 800;
 }
 
 .differentiators-section__list {
@@ -1124,11 +1203,43 @@ const serviceHexagonsBottom = [
 }
 
 @media (max-width: 768px) {
+  .differentiators-section__header {
+    margin-bottom: 36px;
+    gap: 12px;
+  }
+
+  .differentiators-section__main-title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .differentiators-section__title {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
   .diff-row,
   .diff-row--reverse {
     flex-direction: column;
     text-align: center;
     gap: 30px;
+    padding: 40px 0;
+  }
+
+  .diff-row__media {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+
+  .diff-row__content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .differentiators-section {
+    min-height: auto;
+    padding: 70px 0;
   }
 }
 
@@ -1262,7 +1373,7 @@ const serviceHexagonsBottom = [
 .home-contact-section__hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(9, 22, 39, 0.62);
+  background: rgba(9, 22, 39, 0.28);
 }
 
 .home-contact-section__hero-content {
@@ -1283,14 +1394,16 @@ const serviceHexagonsBottom = [
   line-height: 108px;
   color: var(--color-primary);
   margin-bottom: 0;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 .home-contact-section__subtitle {
   font-size: 22px;
   font-weight: 800;
   line-height: 33px;
-  color: #FBE9ED;
+  color: #FFFFFF;
   margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
 /* 3 Contact Columns directly below banner */

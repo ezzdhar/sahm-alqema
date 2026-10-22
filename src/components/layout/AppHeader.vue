@@ -17,7 +17,7 @@ const navLinks = [
 ];
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 20;
+  isScrolled.value = window.scrollY > 10;
 };
 
 const closeMobileMenu = () => {
@@ -593,12 +593,17 @@ onUnmounted(() => {
   }
 
   .app-header--scrolled {
-    padding: 8px 0 0;
+    padding: 0;
   }
 
   .app-header .container {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .app-header--scrolled .container {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .app-header__bar {
@@ -607,11 +612,14 @@ onUnmounted(() => {
   }
 
   .app-header--scrolled .app-header__bar {
-    padding: 5px 12px 5px 12px;
+    padding: 8px 14px;
+    border-radius: 0 0 20px 20px;
+    border-top: none;
   }
 
   .app-header__logo-img {
     height: 36px;
+    width: auto;
   }
 
   .app-header__cta-btn {
