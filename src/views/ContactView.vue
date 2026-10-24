@@ -20,10 +20,13 @@ const errors = reactive({
   phone: '',
   email: '',
   service: '',
+  details: '',
 });
 
 const isSubmitting = ref(false);
 const isSubmitted = ref(false);
+const submitError = ref('');
+const serverSuccessMessage = ref('');
 
 const serviceOptions = [
   { value: 'market-analysis', label: 'تحليل السوق والمنافسين' },
@@ -43,65 +46,182 @@ onMounted(() => {
   }
 });
 
+// Comprehensive field-level validator
+const validateField = (field) => {
+  switch (field) {
+    case 'name': {
+      const val = form.name.trim();
+      if (!val) {
+        errors.name = 'يرجى إدخال الاسم الكامل';
+        return false;
+      }
+      if (val.length < 3) {
+        errors.name = 'يجب ألا يقل الاسم عن 3 أحرف';
+        return false;
+      }
+      if (val.length > 70) {
+        errors.name = 'الاسم طويل جداً، يرجى كتابة اسم مختصر';
+        return false;
+      }
+      if (!/^[\p{L}\s'-]+$/u.test(val)) {
+        errors.name = 'يرجى كتابة الاسم بالحروف فقط بدون أرقام أو رموز خاصة';
+        return false;
+      }
+      errors.name = '';
+      return true;
+    }
+
+    case 'phone': {
+      const val = form.phone.trim();
+      if (!val) {
+        errors.phone = 'يرجى إدخال رقم الهاتف أو الجوال';
+        return false;
+      }
+      // Allow any phone number format (local or international) as long as it has digits
+      const digits = val.replace(/\D/g, '');
+      if (digits.length < 6) {
+        errors.phone = 'يرجى إدخال رقم هاتف صحيح';
+        return false;
+      }
+      errors.phone = '';
+      return true;
+    }
+
+    case 'email': {
+      const val = form.email.trim();
+      if (!val) {
+        errors.email = 'يرجى إدخال البريد الإلكتروني';
+        return false;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!emailRegex.test(val)) {
+        errors.email = 'يرجى إدخال بريد إلكتروني صالح (مثال: name@domain.com)';
+        return false;
+      }
+      errors.email = '';
+      return true;
+    }
+
+    case 'service': {
+      if (!form.service) {
+        errors.service = 'يرجى اختيار نوع الخدمة المطلوبة';
+        return false;
+      }
+      errors.service = '';
+      return true;
+    }
+
+    case 'details': {
+      const val = form.details.trim();
+      if (!val) {
+        errors.details = 'يرجى كتابة تفاصيل مشروعك أو استفسارك';
+        return false;
+      }
+      if (val.length < 10) {
+        errors.details = 'يرجى تقديم تفاصيل أوضح لمشروعك (10 أحرف على الأقل)';
+        return false;
+      }
+      errors.details = '';
+      return true;
+    }
+
+    default:
+      return true;
+  }
+};
+
+// Clear error on user input if previously invalid
+const onFieldInput = (field) => {
+  if (errors[field]) {
+    validateField(field);
+  }
+};
+
+// Validate all form fields together
 const validateForm = () => {
-  let valid = true;
+  const isNameValid = validateField('name');
+  const isPhoneValid = validateField('phone');
+  const isEmailValid = validateField('email');
+  const isServiceValid = validateField('service');
+  const isDetailsValid = validateField('details');
 
-  // Name
-  if (!form.name.trim()) {
-    errors.name = 'يرجى إدخال الاسم الكامل';
-    valid = false;
-  } else {
-    errors.name = '';
-  }
-
-  // Phone
-  if (!form.phone.trim()) {
-    errors.phone = 'يرجى إدخال رقم الجوال';
-    valid = false;
-  } else if (!/^05\d{8}$/.test(form.phone.trim()) && form.phone.trim().length < 9) {
-    errors.phone = 'يرجى إدخال رقم جوال صحيح (مثال: 05XXXXXXXX)';
-    valid = false;
-  } else {
-    errors.phone = '';
-  }
-
-  // Email
-  if (!form.email.trim()) {
-    errors.email = 'يرجى إدخال البريد الإلكتروني';
-    valid = false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
-    errors.email = 'يرجى إدخال بريد إلكتروني صالح';
-    valid = false;
-  } else {
-    errors.email = '';
-  }
-
-  // Service
-  if (!form.service) {
-    errors.service = 'يرجى اختيار نوع الخدمة';
-    valid = false;
-  } else {
-    errors.service = '';
-  }
-
-  return valid;
+  return isNameValid && isPhoneValid && isEmailValid && isServiceValid && isDetailsValid;
 };
 
 const handleSubmit = async () => {
   if (!validateForm()) return;
 
   isSubmitting.value = true;
-  // Simulate API submission
-  await new Promise(resolve => setTimeout(resolve, 900));
-  isSubmitting.value = false;
-  isSubmitted.value = true;
+  submitError.value = '';
 
-  // Reset form
-  form.name = '';
-  form.phone = '';
-  form.email = '';
-  form.service = '';
-  form.details = '';
+  try {
+    const selectedService = serviceOptions.find(o => o.value === form.service);
+    const payload = {
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim(),
+      service: form.service,
+      serviceLabel: selectedService ? selectedService.label : form.service,
+      details: form.details.trim(),
+      message: form.details.trim(),
+      subject: selectedService ? selectedService.label : 'طلب استشارة / خدمة',
+      lang: 'ar'
+    };
+
+    // Use custom API URL from env, or default to the PHP endpoint in public/api/contact.php
+    const endpoint = import.meta.env.VITE_API_URL || '/api/contact.php';
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const contentType = response.headers.get('content-type') || '';
+    let result = null;
+
+    if (contentType.includes('application/json')) {
+      result = await response.json();
+    } else {
+      const text = await response.text();
+      try {
+        result = JSON.parse(text);
+      } catch {
+        if (text.trim().startsWith('<?php')) {
+          throw new Error('PHP_NOT_PARSED');
+        }
+      }
+    }
+
+    if (response.ok && result && result.success) {
+      serverSuccessMessage.value = result.message || 'تم إرسال طلبك بنجاح! سيتواصل معك فريق سهم القمة قريباً.';
+      isSubmitted.value = true;
+
+      // Reset form & errors
+      form.name = '';
+      form.phone = '';
+      form.email = '';
+      form.service = '';
+      form.details = '';
+      Object.keys(errors).forEach(key => { errors[key] = ''; });
+    } else {
+      submitError.value = (result && result.message) 
+        ? result.message 
+        : 'تعذر إرسال الطلب في الوقت الحالي. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على info@sahmalqemma.sa';
+    }
+  } catch (err) {
+    console.error('Submission error:', err);
+    if (err.message === 'PHP_NOT_PARSED') {
+      submitError.value = 'ملاحظة: بيئة التشغيل المحلية الحالية ترجع كود PHP كنص ثابت. تم حل ذلك عبر خادم التطوير أو خادم Node.js.';
+    } else {
+      submitError.value = 'تعذر الاتصال بالخادم. يرجى التأكد من اتصال الإنترنت أو التواصل معنا مباشرة عبر البريد الإلكتروني: info@sahmalqemma.sa';
+    }
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 </script>
 
@@ -147,14 +267,14 @@ const handleSubmit = async () => {
                 </a>
 
                 <!-- Email -->
-                <a href="mailto:info@sahmaqemma.com" class="contact-info-item" data-name="Container">
+                <a href="mailto:info@sahmalqemma.sa" class="contact-info-item" data-name="Container">
                   <span class="contact-info-icon" aria-hidden="true" data-name="Container">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                     </svg>
                   </span>
-                  <span class="contact-info-text" data-name="info@sahmaqemma.com">info@sahmaqemma.com</span>
+                  <span class="contact-info-text" data-name="info@sahmalqemma.sa">info@sahmalqemma.sa</span>
                 </a>
 
                 <!-- Location -->
@@ -213,7 +333,7 @@ const handleSubmit = async () => {
               </div>
               <h3 class="contact-success__title">تم إرسال طلبك بنجاح!</h3>
               <p class="contact-success__desc">
-                شكرًا لتواصلك معنا. سنقوم بمراجعة طلبك والتواصل معك خلال 24 ساعة.
+                {{ serverSuccessMessage || 'شكرًا لتواصلك معنا. سنقوم بمراجعة طلبك والتواصل معك خلال 24 ساعة.' }}
               </p>
               <AppButton variant="outline" size="md" @click="isSubmitted = false">
                 إرسال طلب آخر
@@ -221,20 +341,35 @@ const handleSubmit = async () => {
             </div>
 
             <form v-else class="contact-form" novalidate @submit.prevent="handleSubmit">
+              <!-- Error Alert -->
+              <div v-if="submitError" class="contact-error-alert" role="alert">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span>{{ submitError }}</span>
+              </div>
               <!-- Name and Phone Row -->
               <div class="contact-form__row">
                 <InputField
                   v-model="form.name"
                   label="الاسم الكامل"
                   placeholder="أدخل اسمك الكامل"
+                  required
                   :error="errors.name"
+                  @blur="validateField('name')"
+                  @update:modelValue="onFieldInput('name')"
                 />
                 <InputField
                   v-model="form.phone"
-                  label="رقم الجوال"
-                  placeholder="05XXXXXXXX"
+                  label="رقم الهاتف / الجوال"
+                  placeholder="أدخل رقم الهاتف أو الجوال"
                   type="tel"
+                  required
                   :error="errors.phone"
+                  @blur="validateField('phone')"
+                  @update:modelValue="onFieldInput('phone')"
                 />
               </div>
 
@@ -244,7 +379,10 @@ const handleSubmit = async () => {
                 label="البريد الإلكتروني"
                 placeholder="example@company.com"
                 type="email"
+                required
                 :error="errors.email"
+                @blur="validateField('email')"
+                @update:modelValue="onFieldInput('email')"
               />
 
               <!-- Service Type -->
@@ -252,17 +390,23 @@ const handleSubmit = async () => {
                 v-model="form.service"
                 label="نوع الخدمة المطلوبة"
                 placeholder="اختر الخدمة المطلوبة"
+                required
                 :options="serviceOptions"
                 :error="errors.service"
+                @change="validateField('service')"
               />
 
               <!-- Project Details -->
               <InputField
                 v-model="form.details"
                 label="تفاصيل المشروع"
-                placeholder="صف مشروعك ومتطلباتك بإيجاز..."
+                placeholder="صف مشروعك ومتطلباتك بإيجاز (10 أحرف على الأقل)..."
                 is-textarea
                 :rows="4"
+                required
+                :error="errors.details"
+                @blur="validateField('details')"
+                @update:modelValue="onFieldInput('details')"
               />
 
               <!-- Submit Button -->
@@ -633,5 +777,24 @@ const handleSubmit = async () => {
   max-width: 440px;
   line-height: 1.6;
   margin-bottom: 16px;
+}
+
+.contact-error-alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #DC2626;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.contact-error-alert svg {
+  flex-shrink: 0;
+  color: #DC2626;
 }
 </style>

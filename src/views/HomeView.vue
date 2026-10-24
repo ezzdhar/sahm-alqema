@@ -101,8 +101,8 @@ const contactCards = [
     icon: 'mail',
     title: 'راسلونا',
     subtitle: 'أرسلوا لنا وسنعاود الرد خلال يوم عمل واحد',
-    detail: 'sahmqima@domain.com',
-    link: 'mailto:sahmqima@domain.com',
+    detail: 'info@sahmalqemma.sa',
+    link: 'mailto:info@sahmalqemma.sa',
   },
 ];
 

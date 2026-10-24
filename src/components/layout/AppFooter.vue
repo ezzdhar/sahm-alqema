@@ -85,7 +85,7 @@ const serviceLinks = [
           <div class="app-footer__contact-info" data-name="Frame 93">
             <p class="app-footer__contact-item">الرياض، المملكة العربية السعودية</p>
             <p class="app-footer__contact-item">
-              <a href="mailto:info@sahmqima.com" class="app-footer__link">info@sahmqima.com</a>
+              <a href="mailto:info@sahmalqemma.sa" class="app-footer__link">info@sahmalqemma.sa</a>
             </p>
             <p class="app-footer__contact-item app-footer__contact-item--phone">
               <a href="tel:+966500000000" class="app-footer__link" dir="ltr">+966 50 000 0000</a>
