@@ -318,6 +318,7 @@ const handleSubmit = async () => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(1.08) contrast(1.02);
 }
 
 .contact-hero__overlay {
@@ -325,9 +326,10 @@ const handleSubmit = async () => {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(9, 22, 39, 0.85) 0%,
-    rgba(9, 22, 39, 0.75) 45%,
-    #091627 100%
+    rgba(9, 22, 39, 0.28) 0%,
+    rgba(9, 22, 39, 0.06) 35%,
+    rgba(9, 22, 39, 0.12) 65%,
+    rgba(9, 22, 39, 0.55) 100%
   );
 }
 
@@ -369,9 +371,10 @@ const handleSubmit = async () => {
   font-size: 56px; /* Difference 7: Font size: 56px */
   line-height: 72px; /* Difference 7: Line height: 72px */
   font-weight: 800;
-  color: #F8E9ED; /* Difference 7: Text color: #F8E9ED */
+  color: #FFFFFF;
   text-align: center;
   margin: 0;
+  text-shadow: 0 3px 20px rgba(9, 22, 39, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 @media (max-width: 767px) {
@@ -393,9 +396,10 @@ const handleSubmit = async () => {
   font-size: 28px; /* Difference 9: Font size: 28px */
   line-height: 42px; /* Difference 9: Line height: 42px */
   font-weight: 700; /* Difference 9: Weight: 700 */
-  color: #F8E9ED;
+  color: #FFFFFF;
   text-align: center;
   margin: 0;
+  text-shadow: 0 2px 16px rgba(9, 22, 39, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 @media (max-width: 767px) {
@@ -442,6 +446,13 @@ const handleSubmit = async () => {
   .contact-info-panel {
     width: 421px;
     height: 576px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-info-panel {
+    padding: 24px 18px;
+    min-height: auto;
   }
 }
 
@@ -554,6 +565,13 @@ const handleSubmit = async () => {
     width: 631px; /* Difference 42: Width 631px */
     min-height: 576px;
     height: 600px; /* Difference 41: Height 600px */
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-form-panel {
+    padding: 24px 18px;
+    min-height: auto;
   }
 }
 

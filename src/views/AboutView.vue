@@ -113,7 +113,6 @@ onUnmounted(() => {
   gap: 40px;
 }
 
-/* Manifesto heading title matching Figma */
 .about-hero__title {
   font-size: 56px;
   font-weight: 800;
@@ -121,6 +120,25 @@ onUnmounted(() => {
   letter-spacing: -0.5px;
   color: #FBE9ED;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .about-hero__content {
+    margin-top: 120px;
+    margin-bottom: 50px;
+    gap: 24px;
+    padding: 0 16px;
+  }
+
+  .about-hero__title {
+    font-size: clamp(30px, 8.5vw, 42px);
+    line-height: 1.3;
+  }
+
+  .about-hero__text {
+    font-size: clamp(16px, 4.5vw, 20px) !important;
+    line-height: 1.6 !important;
+  }
 }
 
 /* Manifesto heading body paragraph matching Figma */

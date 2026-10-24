@@ -477,13 +477,15 @@ const serviceHexagonsBottom = [
   padding-top: 170px;
   padding-bottom: 0;
   z-index: 2;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .hero-section {
     min-height: auto;
     padding-top: 110px;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
+    overflow: hidden;
   }
 }
 
@@ -550,13 +552,13 @@ const serviceHexagonsBottom = [
 
 @media (max-width: 768px) {
   .hero-section__content {
-    gap: 24px;
+    gap: 20px;
   }
 
   .hero-section__title {
-    font-size: 44px;
-    line-height: 52px;
-    margin-bottom: 18px;
+    font-size: clamp(32px, 8.5vw, 44px);
+    line-height: 1.25;
+    margin-bottom: 14px;
   }
 }
 
@@ -576,8 +578,8 @@ const serviceHexagonsBottom = [
 
 @media (max-width: 768px) {
   .hero-section__subtitle {
-    font-size: 18px;
-    line-height: 28px;
+    font-size: clamp(15px, 4.2vw, 18px);
+    line-height: 1.6;
   }
 }
 
@@ -586,6 +588,21 @@ const serviceHexagonsBottom = [
   align-items: center;
   gap: 24px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .hero-section__actions {
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero-btn {
+    flex: 1 1 auto;
+    min-width: 135px;
+    padding: 12px 20px !important;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 .hero-btn {
@@ -640,6 +657,7 @@ const serviceHexagonsBottom = [
   width: 100%;
   margin-top: auto;
   margin-bottom: 0;
+  overflow: hidden;
 }
 
 @media (min-width: 1024px) {
@@ -736,12 +754,14 @@ const serviceHexagonsBottom = [
   text-align: center;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .services-overview {
     padding-top: 60px;
     padding-bottom: 60px;
+    overflow: hidden;
   }
 }
 
@@ -941,12 +961,12 @@ const serviceHexagonsBottom = [
 
 @media (max-width: 767px) {
   .services-hex-cluster {
-    --hex-w: clamp(96px, 28vw, 150px);
+    --hex-w: clamp(84px, 26vw, 120px);
   }
 
   .services-hex-card__text {
-    font-size: clamp(10px, 2.5vw, 13px);
-    line-height: 1.35;
+    font-size: clamp(9px, 2.2vw, 12px);
+    line-height: 1.3;
   }
 }
 
@@ -956,6 +976,7 @@ const serviceHexagonsBottom = [
   color: #FFFFFF;
   padding: 100px 0;
   position: relative;
+  overflow: hidden;
 }
 
 .steps-section__container {
@@ -1138,11 +1159,18 @@ const serviceHexagonsBottom = [
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: hidden;
 }
 
 .differentiators-section__container {
   max-width: 921px;
   padding: 0;
+}
+
+@media (max-width: 768px) {
+  .differentiators-section__container {
+    padding: 0 16px;
+  }
 }
 
 .differentiators-section__header {
@@ -1348,6 +1376,7 @@ const serviceHexagonsBottom = [
 .home-contact-section {
   position: relative;
   background-color: #FFFFFF;
+  overflow: hidden;
 }
 
 .home-contact-section__hero {
@@ -1359,6 +1388,14 @@ const serviceHexagonsBottom = [
   justify-content: center;
   text-align: center;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .home-contact-section__hero {
+    height: auto;
+    min-height: 320px;
+    padding: 60px 16px;
+  }
 }
 
 .home-contact-section__hero-bg {
@@ -1397,6 +1434,13 @@ const serviceHexagonsBottom = [
   text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
+@media (max-width: 768px) {
+  .home-contact-section__title {
+    font-size: clamp(34px, 9vw, 48px);
+    line-height: 1.3;
+  }
+}
+
 .home-contact-section__subtitle {
   font-size: 22px;
   font-weight: 800;
@@ -1404,6 +1448,13 @@ const serviceHexagonsBottom = [
   color: #FFFFFF;
   margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 768px) {
+  .home-contact-section__subtitle {
+    font-size: clamp(14px, 4vw, 17px);
+    line-height: 1.5;
+  }
 }
 
 /* 3 Contact Columns directly below banner */

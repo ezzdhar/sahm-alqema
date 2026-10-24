@@ -13,6 +13,7 @@ const serviceLinks = [
   { name: 'تحليل السوق والمنافسين', path: '/services#market-analysis' },
   { name: 'تطوير الأعمال', path: '/services#business-dev' },
   { name: 'تصميم وبرمجة المواقع والتطبيقات', path: '/services#web-apps' },
+  { name: 'التسويق بالفيديو والجرافيك', path: '/services#marketing' },
   { name: 'إدارة السوشيال ميديا', path: '/services#social-media' },
 ];
 </script>
@@ -26,12 +27,11 @@ const serviceLinks = [
           <RouterLink
             to="/"
             class="app-footer__logo"
-            data-name="Gemini_Generated_Image_waitl4bwaitl4bwait-removebg-preview 1"
+            aria-label="الرئيسية"
           >
             <img
               :src="`${baseUrl}assets/logo.png`"
-              alt="Gemini_Generated_Image_waitl4bwaitl4bwait-removebg-preview 1"
-              data-name="Gemini_Generated_Image_waitl4bwaitl4bwait-removebg-preview 1"
+              alt="مؤسسة سهم القمة"
               class="app-footer__logo-img"
             />
           </RouterLink>
@@ -85,10 +85,10 @@ const serviceLinks = [
           <div class="app-footer__contact-info" data-name="Frame 93">
             <p class="app-footer__contact-item">الرياض، المملكة العربية السعودية</p>
             <p class="app-footer__contact-item">
-              <a href="mailto:info@sahmqima.com" class="app-footer__link">Sahmqima.com</a>
+              <a href="mailto:info@sahmqima.com" class="app-footer__link">info@sahmqima.com</a>
             </p>
-            <p class="app-footer__contact-item" dir="ltr">
-              <a href="tel:+201000000000" class="app-footer__link">+20 10 000 0000</a>
+            <p class="app-footer__contact-item app-footer__contact-item--phone">
+              <a href="tel:+966500000000" class="app-footer__link" dir="ltr">+966 50 000 0000</a>
             </p>
           </div>
         </div>
@@ -100,7 +100,7 @@ const serviceLinks = [
           class="app-footer__copyright"
           data-name="2026 © مؤسسة سهم القمة. جميع الحقوق محفوظة."
         >
-          2026 © مؤسسة سهم القمة. جميع الحقوق محفوظة.
+          © 2026 مؤسسة سهم القمة. جميع الحقوق محفوظة.
         </p>
       </div>
     </div>
@@ -111,32 +111,22 @@ const serviceLinks = [
 .app-footer {
   background-color: var(--color-navy-dark);
   color: var(--color-text-white);
-  padding: 86px 0 0;
-  border-top: none;
+  padding: 72px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   width: 100%;
 }
 
 .app-footer__container {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-@media (max-width: 1247px) {
-  .app-footer__container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
 
 .app-footer__grid {
-  width: 1248.5px;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -146,12 +136,13 @@ const serviceLinks = [
 @media (min-width: 640px) {
   .app-footer__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
   }
 }
 
 @media (min-width: 1024px) {
   .app-footer__grid {
-    grid-template-columns: 1.5fr 115px 1.5fr 1fr;
+    grid-template-columns: 1.3fr 0.9fr 1.3fr 1.1fr;
     gap: 48px;
     align-items: start;
   }
@@ -161,6 +152,8 @@ const serviceLinks = [
 .app-footer__brand {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
   gap: 16px;
 }
 
@@ -171,11 +164,13 @@ const serviceLinks = [
 }
 
 .app-footer__desc {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 27px;
+  line-height: 26px;
   color: #E0E0E0;
   max-width: 320px;
+  text-align: right;
+  margin: 0;
 }
 
 .app-footer__socials {
@@ -205,60 +200,51 @@ const serviceLinks = [
   box-shadow: 0 4px 12px rgba(214, 33, 78, 0.4);
 }
 
-/* Titles & Lists Matching Figma Frame 90, 89, 88, 92, 91, 87, 93 */
-.app-footer__col--quick {
-  width: 115px;
+/* Columns */
+.app-footer__col {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Frame 91 gap: 20px in Figma */
+  gap: 16px;
+  text-align: right;
 }
 
-.app-footer__col--services {
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* Frame 88 gap: 12px in Figma */
-}
-
+.app-footer__col--quick,
+.app-footer__col--services,
 .app-footer__col--contact {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Frame 89 gap: 12px in Figma */
+  gap: 16px;
+  text-align: right;
 }
 
 .app-footer__title {
   font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 0;
+  font-weight: 700;
+  margin: 0;
   color: #D6214E;
   position: relative;
   display: inline-block;
+  text-align: right;
 }
 
 .app-footer__list {
   list-style: none;
   display: flex;
   flex-direction: column;
-}
-
-.app-footer__list--quick {
-  gap: 12px; /* Frame 87 gap: 12px in Figma */
-}
-
-.app-footer__list--services {
-  gap: 8px; /* Frame 92 gap: 8px in Figma */
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  text-align: right;
 }
 
 .app-footer__link {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 27px; /* Line height 27px in Figma */
+  line-height: 26px;
   color: #E0E0E0;
   transition: all var(--transition-fast);
   display: inline-block;
-}
-
-.app-footer__link--service {
-  line-height: 27px; /* Line height 27px in Figma */
+  text-align: right;
 }
 
 .app-footer__link:hover {
@@ -269,20 +255,34 @@ const serviceLinks = [
 .app-footer__contact-info {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Frame 93 gap: 20px in Figma */
+  gap: 14px;
+  text-align: right;
 }
 
 .app-footer__contact-item {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   color: #E0E0E0;
-  line-height: 27px; /* Line height 27px in Figma */
+  line-height: 26px;
+  margin: 0;
+  text-align: right;
 }
 
-/* Bottom Frame 83 */
+.app-footer__contact-item--phone {
+  text-align: right;
+}
+
+.app-footer__contact-item--phone .app-footer__link {
+  display: inline-block;
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: right;
+}
+
+/* Bottom */
 .app-footer__bottom {
-  margin-top: 60px;
-  padding: 24px 0;
+  margin-top: 56px;
+  padding: 24px 0 28px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: center;
@@ -292,9 +292,9 @@ const serviceLinks = [
 
 .app-footer__copyright {
   font-family: var(--font-inter);
-  font-size: 12px;
-  line-height: 18px;
-  color: #F0F0F0;
+  font-size: 13px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.7);
   text-align: center;
   margin: 0 auto;
   display: block;
