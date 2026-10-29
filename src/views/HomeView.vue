@@ -477,7 +477,6 @@ const serviceHexagonsBottom = [
   padding-top: 170px;
   padding-bottom: 0;
   z-index: 2;
-  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -485,7 +484,6 @@ const serviceHexagonsBottom = [
     min-height: auto;
     padding-top: 110px;
     padding-bottom: 30px;
-    overflow: hidden;
   }
 }
 
@@ -586,7 +584,7 @@ const serviceHexagonsBottom = [
 .hero-section__actions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -597,56 +595,53 @@ const serviceHexagonsBottom = [
   }
 
   .hero-btn {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-width: 135px;
-    padding: 12px 20px !important;
-    text-align: center;
-    justify-content: center;
+    height: 52px;
+    padding: 0 16px;
   }
 }
 
 .hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 32px;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  box-shadow: none !important;
+  border-radius: 12px;
+  box-sizing: border-box;
+  box-shadow: none;
   cursor: pointer;
+  text-align: center;
   transition: all var(--transition-normal);
 }
 
 .hero-btn--primary {
-  padding: 14px 34px;
   background: var(--color-primary);
   color: #FFFFFF;
-  border: none;
-  border-radius: 12px;
+  border: 1.5px solid var(--color-primary);
 }
 
 .hero-btn--primary:hover {
   background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
   transform: translateY(-2px);
 }
 
 .hero-btn--outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 34px !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
-  border-radius: 12px !important;
-  background: rgba(9, 22, 39, 0.45) !important;
+  background: rgba(9, 22, 39, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: #FFFFFF !important;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  transition: all var(--transition-normal);
+  color: #FFFFFF;
 }
 
 .hero-btn--outline:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -656,12 +651,12 @@ const serviceHexagonsBottom = [
   z-index: 20;
   width: 100%;
   margin-top: auto;
-  margin-bottom: 0;
-  overflow: hidden;
+  margin-bottom: 24px;
 }
 
 @media (min-width: 1024px) {
   .hero-features {
+    margin-bottom: 0;
     transform: translateY(50%);
   }
 }
@@ -675,7 +670,7 @@ const serviceHexagonsBottom = [
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  box-shadow: none;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
   width: 100%;
   max-width: 1248px;
   margin: 0 auto;
@@ -690,7 +685,8 @@ const serviceHexagonsBottom = [
 @media (min-width: 1024px) {
   .hero-features__bar {
     grid-template-columns: repeat(4, 1fr);
-    height: 145px;
+    min-height: 145px;
+    height: auto;
   }
 }
 
@@ -708,7 +704,7 @@ const serviceHexagonsBottom = [
 
 @media (min-width: 1024px) {
   .hero-features__item {
-    padding: 0 20px;
+    padding: 16px 18px;
   }
 }
 
@@ -723,10 +719,10 @@ const serviceHexagonsBottom = [
 }
 
 .hero-features__text {
-  font-size: 16px;
+  font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 500;
   color: #FFFFFF;
-  line-height: 24px;
+  line-height: 1.5;
   text-align: center;
   margin: 0;
 }
@@ -754,14 +750,12 @@ const serviceHexagonsBottom = [
   text-align: center;
   position: relative;
   z-index: 1;
-  overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .services-overview {
     padding-top: 60px;
     padding-bottom: 60px;
-    overflow: hidden;
   }
 }
 
@@ -1107,7 +1101,8 @@ const serviceHexagonsBottom = [
   background: rgba(28, 28, 28, 0.15);
   border: none;
   border-radius: 12px;
-  height: 270px;
+  min-height: 270px;
+  height: auto;
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
@@ -1153,23 +1148,22 @@ const serviceHexagonsBottom = [
 
 /* Differentiators (Why Us - Desktop - 6) */
 .differentiators-section {
-  padding: 130px 0;
+  padding: 100px 0;
   background-color: #FAF7F2;
-  min-height: 2004px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
+  position: relative;
 }
 
 .differentiators-section__container {
   max-width: 921px;
-  padding: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 32px;
+  box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .differentiators-section__container {
-    padding: 0 16px;
+    padding-inline: clamp(20px, 5vw, 32px);
   }
 }
 
@@ -1180,6 +1174,8 @@ const serviceHexagonsBottom = [
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-inline: 16px;
+  box-sizing: border-box;
 }
 
 .differentiators-section__main-title {
@@ -1230,44 +1226,48 @@ const serviceHexagonsBottom = [
   flex-direction: row-reverse;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .differentiators-section__header {
     margin-bottom: 36px;
     gap: 12px;
   }
 
   .differentiators-section__main-title {
-    font-size: 32px;
-    line-height: 42px;
+    font-size: clamp(28px, 6vw, 36px);
+    line-height: 1.3;
   }
 
   .differentiators-section__title {
-    font-size: 20px;
-    line-height: 32px;
+    font-size: clamp(16px, 4vw, 22px);
+    line-height: 1.5;
   }
 
   .diff-row,
   .diff-row--reverse {
     flex-direction: column;
     text-align: center;
-    gap: 30px;
-    padding: 40px 0;
+    gap: 24px;
+    padding: 40px 16px;
+    box-sizing: border-box;
   }
 
   .diff-row__media {
     width: 100%;
     max-width: 280px;
     height: auto;
+    min-height: 200px;
   }
 
   .diff-row__content {
     width: 100%;
     max-width: 100%;
+    align-items: center;
+    padding-inline: 12px;
+    box-sizing: border-box;
   }
 
   .differentiators-section {
-    min-height: auto;
-    padding: 70px 0;
+    padding: 60px 0;
   }
 }
 
@@ -1283,8 +1283,8 @@ const serviceHexagonsBottom = [
 
 .diff-row__ellipse {
   position: absolute;
-  width: 260px;
-  height: 260px;
+  width: min(260px, 70vw);
+  height: min(260px, 70vw);
   border-radius: 50%;
   background: radial-gradient(circle, rgba(214, 33, 78, 0.08) 0%, rgba(214, 33, 78, 0) 70%);
   pointer-events: none;
@@ -1298,7 +1298,8 @@ const serviceHexagonsBottom = [
 }
 
 .diff-row__num-img {
-  width: 260px;
+  width: min(260px, 75vw);
+  max-width: 100%;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
@@ -1343,7 +1344,7 @@ const serviceHexagonsBottom = [
   align-items: flex-start;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .diff-row__title-wrap {
     align-items: center;
   }
@@ -1370,6 +1371,16 @@ const serviceHexagonsBottom = [
   color: #4A4A4A;
   line-height: 28px;
   max-width: 400px;
+}
+
+@media (max-width: 960px) {
+  .diff-row__desc {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+    padding-inline: 12px;
+    box-sizing: border-box;
+  }
 }
 
 /* Home Contact Section Matching Figma */
@@ -1483,8 +1494,9 @@ const serviceHexagonsBottom = [
   justify-content: center;
   text-align: center;
   gap: 10px;
-  padding: 10px 28px;
-  height: 302px;
+  padding: 16px 24px;
+  min-height: 280px;
+  height: auto;
 }
 
 @media (min-width: 768px) {

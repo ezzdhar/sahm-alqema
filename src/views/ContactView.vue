@@ -521,35 +521,34 @@ const handleSubmit = async () => {
   text-shadow: 0 3px 20px rgba(9, 22, 39, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
-@media (max-width: 767px) {
-  .contact-hero {
-    padding-top: 140px;
-    padding-bottom: 60px;
-  }
-
-  .contact-hero__title {
-    font-size: 38px;
-    line-height: 50px;
-  }
-}
-
 .contact-hero__desc {
   width: 100%;
   max-width: 1100px;
   font-family: var(--font-family);
-  font-size: 28px; /* Difference 9: Font size: 28px */
-  line-height: 42px; /* Difference 9: Line height: 42px */
-  font-weight: 700; /* Difference 9: Weight: 700 */
+  font-size: 28px;
+  line-height: 42px;
+  font-weight: 700;
   color: #FFFFFF;
   text-align: center;
   margin: 0;
   text-shadow: 0 2px 16px rgba(9, 22, 39, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
+  .contact-hero {
+    min-height: auto;
+    padding-top: 140px;
+    padding-bottom: 60px;
+  }
+
+  .contact-hero__title {
+    font-size: clamp(32px, 6vw, 44px);
+    line-height: 1.3;
+  }
+
   .contact-hero__desc {
-    font-size: 18px;
-    line-height: 28px;
+    font-size: clamp(16px, 3.5vw, 22px);
+    line-height: 1.5;
   }
 }
 
@@ -589,7 +588,8 @@ const handleSubmit = async () => {
 @media (min-width: 1024px) {
   .contact-info-panel {
     width: 421px;
-    height: 576px;
+    min-height: 576px;
+    height: auto;
   }
 }
 
@@ -707,8 +707,8 @@ const handleSubmit = async () => {
 @media (min-width: 1024px) {
   .contact-form-panel {
     width: 631px; /* Difference 42: Width 631px */
-    min-height: 576px;
-    height: 600px; /* Difference 41: Height 600px */
+    min-height: 600px;
+    height: auto;
   }
 }
 
